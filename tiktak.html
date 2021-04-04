@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang = "en" dir = "ltr">
+	<head>
+		  <title>Tik Tak | X and O</title>
+		  <meta charset="utf-8">
+		  <meta name="viewport" content="width=device-width, initial-scale=1">
+		  <link type="text/css" rel="stylesheet"href="css/bootstrap.css">
+		  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js" integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js" integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc" crossorigin="anonymous"></script>
+
+		<style type="text/css">
+			.container-fluid{
+				height:872px;
+				padding: 0;
+				margin: 0;
+			}
+			.input-group{
+				width:100%;
+				height: 33.3%;
+				padding: 0;
+				margin: 0;
+
+			}
+			.btn{
+				width:100%;
+				height:99%;
+				border-radius: 0;
+				padding: 0;
+				margin: 2px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class = "container-fluid my-1">
+			<div class = "input-group">
+				<input class = "form-control btn btn-dark " onclick="play(this.id)" type="button" id="btn1">
+				<input class = "form-control btn btn-dark " onclick="play(this.id)" type="button" id="btn2">
+				<input class = "form-control btn btn-dark " onclick="play(this.id)" type="button" id="btn3">
+			</div>
+			<div class = "input-group">
+				<input class = "form-control btn btn-dark " onclick="play(this.id)" type="button" id="btn4">
+				<input class = "form-control btn btn-dark " onclick="play(this.id)" type="button" id="btn5">
+				<input class = "form-control btn btn-dark " onclick="play(this.id)" type="button" id="btn6">
+			</div>
+			<div class = "input-group">
+				<input class = "form-control btn btn-dark " onclick="play(this.id)" type="button" id="btn7">
+				<input class = "form-control btn btn-dark " onclick="play(this.id)" type="button" id="btn8">
+				<input class = "form-control btn btn-dark " onclick="play(this.id)" type="button" id="btn9">
+			</div>
+		</div>
+
+	</body>
+	<script type="text/javascript">
+		var player = "X";
+		var np = 0;
+		var btns = ["", "", "",
+					"", "", "",
+					"", "", ""];
+
+function play(e){
+
+	if(np%2 ==1) player = "O";
+	else player = "X";
+
+	var btn = document.getElementById(e);
+
+	if(btn.value == "X" || btn.value == "O")
+		alert("Error this button is clicked");
+	else {
+
+		btn.value = player;
+		for (var i = btns.length; i > 0; i--) {
+
+			if(e == "btn"+i) btns[i-1] = player;
+
+		}
+
+	np++;
+	}
+
+
+	if(btns[0] == btns[1] && btns[1] == btns[2] && btns[2] != "") 
+	{
+		alert(btns[0] + " is the winner");
+		location.reload();
+	}
+	else if(btns[0] == btns[3] && btns[3] == btns[6] && btns[6] != "") 
+	{
+		alert(btns[0] + " is the winner");
+		location.reload();
+	}
+	else if(btns[1] == btns[4] && btns[4] == btns[7] && btns[7] != "") 
+	{
+		alert(btns[1] + " is the winner");
+		location.reload();
+	}
+	else if(btns[3] == btns[4] && btns[4] == btns[5] && btns[5] != "")
+	{	 
+		alert(btns[3] + " is the winner");
+		location.reload();
+	}
+	else if(btns[2] == btns[5] && btns[5] == btns[8] && btns[8] != "")
+	{
+		 alert(btns[2] + " is the winner");
+		 location.reload();
+	}
+	else if(btns[8] == btns[7] && btns[7] == btns[6] && btns[6] != "")
+	{
+		alert(btns[8] + " is the winner");
+		location.reload();
+	}
+	else if(btns[0] == btns[4] && btns[4] == btns[8] && btns[8] != "")
+	{
+		alert(btns[0] + " is the winner");
+		location.reload();
+	}
+	else if(btns[2] == btns[4] && btns[4] == btns[6] && btns[6] != "")
+	{
+		alert(btns[2] + " is the winner");
+		location.reload();
+	}
+	else if(btns[0] != "" && btns[1] != "" && btns[2] != "" && 
+			btns[3] != "" && btns[4] != "" && btns[5] != "" && 
+			btns[6] != "" && btns[7] != "" && btns[8] != "")
+	{
+		alert("Game is over");
+		location.reload();
+	}
+
+
+}
+
+	</script>
+
+
+
+
+
+</html>

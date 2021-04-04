@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang = "en" dir = "ltr">
+	<head>
+		  <title>Form manipulation | Add and Remove</title>
+		  <meta charset="utf-8">
+		  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+		  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js" integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js" integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc" crossorigin="anonymous"></script>
+
+		<style type="text/css">
+			.container-fluid{
+
+				border : 2px solid gray;
+			}
+			img{
+				width:50px;
+				height:50px;
+				opacity: 0.8;
+			}
+			img:hover{
+				opacity: 1;
+			}
+
+		</style>
+	</head>
+	<body >
+		
+		<div class ="container-fluid my-3 p-3">
+			<form>
+				<div id="demo"></div>
+				<div id="form">
+					<div id="group"class="input-group my-3 mx-3">
+					  <span class="input-group-text">First and last name</span>
+					  <input type="text" aria-label="First name" class="form-control"name="fname[]">
+					  <input type="text" aria-label="Last name" class="form-control" name="lname[]">
+
+					  <img class="delete"src="img/minus.png"class="mx-3"  onclick ="deletediv()">
+
+					</div>
+
+				</div>
+			</form>
+			<div class="d-inline">
+				<img src="img/plus.png" onclick="add_div()"/>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript">
+		var i =0;
+		function add_div(){
+
+
+			var div = document.getElementById("group");
+			var cln = div.cloneNode(true)
+			document.getElementById("form").appendChild(cln).id +=i;
+						i++;
+
+		}
+		function deletediv(){
+			var y = document.body.div.form.div.activeElement.TagName;
+			document.getElementById("demo").innerHTML += y;
+
+		}
+
+
+
+
+	</script>
+
+
+
+
+
+</html>

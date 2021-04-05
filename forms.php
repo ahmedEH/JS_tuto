@@ -25,31 +25,50 @@
 
 	</head>
 
-	<body class = "bg-default">
+	<body class = "">
 
-		<div class ="container my-3">
+		<div class ="container my-3 p-3">
 
 			<div class = "container text-center text-primary">
 				<h1 class = "text-primary"> Formulaire d'enregistrement </h1>
 			</div>
+<?php
 
+if(isset($_GET['l']))
+{
+
+	echo "<div class=\"alert alert-success\">
+  <strong>Success!</strong>  personnes are inserted successfilly.
+</div>";
+}
+
+?>
 			<div class="container">
-				<form id = "form">
-				  <div class="row p-3 my-3" id = "div0">
+				<form id = "form" action = "insert.php" method="GET">
+				  <div class="row my-3" id = "div0">
 				    <div class="col">
-				      <input type="text" class="form-control" placeholder="First name">
+				      <input type="text" name = "nom[]" class="form-control" placeholder="First name">
 				    </div>
 				    <div class="col">
-				      <input type="text" class="form-control" placeholder="Last name">
+				      <input type="text" name = "prenom[]" class="form-control" placeholder="Last name">
 				    </div>
 				    <div class="col-3">
 				      <input type="button" class=" btn btn-danger form-control" value="supprimer" onclick="delete_form(this.parentNode.parentNode.id)">
 				    </div>
 				  </div>
-				  <div class = "row p-3">
+				  <div class = "row" style="padding-left: 0">
 				  	<div class= "col-3">
 				  		<input id="add"type="button" class=" btn btn-success form-control" value="ajouter" onclick="add_form(this.parentNode.parentNode.previousElementSibling.id)">
 				  	</div>
+				  </div>
+				  <div class="row my-3" id = "div0">
+				    <div class="col">
+				      <input type="submit" name = "submit" class="form-control btn btn-primary" placeholder="First name">
+				    </div>
+				    <div class="col">
+				      <input type="reset" name = "reset" class="form-control btn btn-warning" placeholder="Last name">
+				    </div>
+
 				  </div>
 
 				</form>
@@ -65,7 +84,7 @@
 			div --;
 			var u = document.getElementById(e);
 			console.log(u.previousElementSibling);
-			if( u.previousElementSibling == null) {
+			if( u.previousElementSibling == null && u.nextElementSibling.nextElementSibling.nextElementSibling == null) {
 				alert("you are obliged to add one");
 			}
 			else
@@ -82,12 +101,16 @@
 		{
 			
 			var d = document.getElementById(e);
+
 			var cln = d.cloneNode(true);
 			while(div <= 0) div++;
 			while(document.getElementById("div" + div) != null) div++;
 			cln.id = "div" + div;
 
+
+
 			var form = document.getElementById("form");
+
 			form.insertBefore(cln, document.getElementById("add").parentNode.parentNode); 
 			console.log(div);
 			div++;
